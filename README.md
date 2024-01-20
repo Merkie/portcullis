@@ -1,50 +1,73 @@
 ![](https://drive.google.com/uc?export=download&id=1wLSnQj4J8V6luYK1DdGrg2p71aCCTOFN)
 
-# Portcullis - Paywalls for people who give a 💩
+# Portcullis - Client portals for people who give a 💩
 
-This is a monorepo containing the frontend and backend code for Portcullis. It uses NX to manage the workspaces.
+This is a monorepo containing the portal, admin, backend, and documentation code for Portcullis. It uses NX to manage the workspaces.
 
 ## Workspaces
 
-There are two main workspaces:
+There are three main workspaces:
 
-- `apps/frontend` - The frontend SDK
-- `apps/backend` - The Node.js backend application
+- `apps/portal` - The frontend React portal
+- `apps/admin` - The frontend React admin interface
+- `apps/backend` - The Fastify backend
 
 ## Getting Started
 
-To run the frontend and backend apps in development mode:
+Install dependencies:
 
 ```
 npm install
-nx serve frontend
+```
+
+Run the various services:
+
+```
+nx serve portal 
+nx serve admin
 nx serve backend
 ```
 
-The frontend will be available at http://localhost:4200 and the backend at http://localhost:3333.
+The portal will be at http://localhost:4200, admin at http://localhost:4201, and backend at http://localhost:3333
 
 **Building**
 
-To build both workspaces:
+Build all workspaces:
 
 ```
-nx build frontend
+nx build-many --all
+```
+
+Or target specific ones:
+
+```
+nx build portal
+nx build admin
 nx build backend
 ```
 
-This will create production bundles for each app in `dist/apps/frontend` and `dist/apps/backend`.
+**Testing**
 
-**Running tests**
-
-To run all tests:
+Run all tests:
 
 ```
-nx test
+nx test-many --all
 ```
 
-You can also run tests for each workspace individually:
+Or target specific workspaces:
 
 ```
-nx test frontend
+nx test portal
 nx test backend
 ```
+
+**Generating Code**
+
+NX can generate new code like components, services, interfaces, etc:
+
+```
+nx generate @nrwl/react:component my-component --project=portal
+nx generate @nrwl/fastify:service my-service --project=backend
+```
+
+See the NX docs for more generation capabilities.
