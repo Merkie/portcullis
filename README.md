@@ -1,8 +1,6 @@
 ![](https://drive.google.com/uc?export=download&id=1wLSnQj4J8V6luYK1DdGrg2p71aCCTOFN)
 
-# Portcullis
-
-Paywalls for people who give a 💩
+# Portcullis - Paywalls for people who give a 💩
 
 This is a monorepo containing the frontend and backend code for Portcullis. It uses NX to manage the workspaces.
 
