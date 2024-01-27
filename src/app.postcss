@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	background-color: black;
+	color: white;
+}
+
+/* Effects for click, hover, and disabled */
+.mouse-fx {
+	@apply transition-all hover:brightness-75 active:brightness-100 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Link Class */
+.link {
+	@apply mouse-fx underline;
+}
+
+/* Button Classes */
+.btn {
+	@apply mouse-fx flex items-center justify-center gap-4 rounded-md;
+}
+
+.auth-btn {
+	@apply btn border border-neutral-900 bg-neutral-950 p-3 text-lg;
+}
