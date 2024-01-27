@@ -8,8 +8,12 @@ html {
 }
 
 /* Effects for click, hover, and disabled */
+.disabled-fx {
+	@apply transition-all disabled:cursor-not-allowed disabled:opacity-50;
+}
+
 .mouse-fx {
-	@apply transition-all hover:brightness-75 active:brightness-100 disabled:cursor-not-allowed disabled:opacity-50;
+	@apply disabled-fx transition-all hover:brightness-75 active:brightness-100;
 }
 
 /* Link Class */
@@ -22,6 +26,19 @@ html {
 	@apply mouse-fx flex items-center justify-center gap-4 rounded-md;
 }
 
-.auth-btn {
+.btn-auth {
 	@apply btn border border-neutral-900 bg-neutral-950 p-3 text-lg;
+}
+
+.btn-primary {
+	@apply btn bg-lime-500 p-3 text-lg font-medium text-black;
+}
+
+/* Input Classes */
+.input {
+	@apply disabled-fx w-full rounded-md outline-none ring-neutral-800 focus:ring-2;
+}
+
+.input-auth {
+	@apply input border border-neutral-900 bg-transparent p-3 text-neutral-400;
 }
