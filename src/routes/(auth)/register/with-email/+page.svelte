@@ -1,3 +1,30 @@
+<script lang="ts">
+	let email = $state('');
+	let displayName = $state('');
+	let password = $state('');
+	let confirmPassword = $state('');
+
+	let error = $state('');
+
+	async function submit() {
+		error = '';
+
+		if (password !== confirmPassword) return (error = 'Passwords do not match');
+
+		const response = await fetch('/api/auth/email/register', {
+			method: 'POST',
+			body: JSON.stringify({ email, displayName, password })
+		}).then((res) => res.json());
+
+		if (response.error) {
+			if (typeof response.error === 'string') return (error = response.error);
+			return (error = 'Invalid input');
+		}
+
+		if (response.success) return window.location.assign('/dashboard');
+	}
+</script>
+
 <svelte:head>
 	<title>Register with email | Portcullis</title>
 </svelte:head>
@@ -6,25 +33,29 @@
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Email</p>
-	<input type="email" class="input-auth" />
+	<input bind:value={email} type="email" class="input-auth" />
 </div>
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Display Name</p>
-	<input type="text" class="input-auth" />
+	<input bind:value={displayName} type="text" class="input-auth" />
 </div>
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Password</p>
-	<input type="password" class="input-auth" />
+	<input bind:value={password} type="password" class="input-auth" />
 </div>
 
 <div class="mb-8 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Confirm Password</p>
-	<input type="password" class="input-auth" />
+	<input bind:value={confirmPassword} type="password" class="input-auth" />
 </div>
 
-<button class="btn-primary mb-8">
+{#if error}
+	<p class="mb-4 text-red-500">Error: {error}</p>
+{/if}
+
+<button on:click={submit} class="btn-primary mb-8">
 	<span>Submit</span>
 </button>
 

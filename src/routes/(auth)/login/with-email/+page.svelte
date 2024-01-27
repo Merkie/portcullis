@@ -1,3 +1,26 @@
+<script lang="ts">
+	let email = $state('');
+	let password = $state('');
+
+	let error = $state('');
+
+	async function submit() {
+		error = '';
+
+		const response = await fetch('/api/auth/email/login', {
+			method: 'POST',
+			body: JSON.stringify({ email, password })
+		}).then((res) => res.json());
+
+		if (response.error) {
+			if (typeof response.error === 'string') return (error = response.error);
+			return (error = 'Invalid input');
+		}
+
+		if (response.success) return window.location.assign('/dashboard');
+	}
+</script>
+
 <svelte:head>
 	<title>Login with email | Portcullis</title>
 </svelte:head>
@@ -6,15 +29,19 @@
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Email</p>
-	<input type="email" class="input-auth" />
+	<input bind:value={email} type="email" class="input-auth" />
 </div>
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Password</p>
-	<input type="password" class="input-auth" />
+	<input bind:value={password} type="password" class="input-auth" />
 </div>
 
-<button class="btn-primary mb-8">
+{#if error}
+	<p class="mb-4 text-red-500">Error: {error}</p>
+{/if}
+
+<button on:click={submit} class="btn-primary mb-8">
 	<span>Submit</span>
 </button>
 
