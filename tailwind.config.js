@@ -2,7 +2,14 @@
 export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {}
+		fontFamily: {
+			sans: ['FixelText', 'sans-serif']
+		},
+		extend: {
+			fontFamily: {
+				display: 'FixelDisplay, sans-serif'
+			}
+		}
 	},
 	plugins: []
 };
