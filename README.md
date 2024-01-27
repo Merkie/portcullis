@@ -1,18 +1,8 @@
-# create-svelte
+![](https://drive.google.com/uc?export=download&id=1wLSnQj4J8V6luYK1DdGrg2p71aCCTOFN)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+# Portcullis - The Client Portal of the future
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+This is a repo containing the SvelteKit app for Portcullis, our open-source client portal
 
 ## Developing
 
