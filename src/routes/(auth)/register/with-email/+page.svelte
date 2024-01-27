@@ -4,16 +4,31 @@
 
 <h1 class="mb-8 font-display text-4xl font-semibold">Register with email</h1>
 
-<a href="/register/with-email" class="auth-btn mb-4">
-	<i class="bi bi-envelope"></i>
-	<span>Continue with Email</span>
-</a>
+<div class="mb-4 flex flex-col gap-2">
+	<p class="font-light text-neutral-500">Email</p>
+	<input type="email" class="input-auth" />
+</div>
 
-<button class="auth-btn mb-8" disabled={true}>
-	<img src="/images/google-icon-small.png" width={20} alt="Google Logo" />
-	<span>Continue with Google</span>
+<div class="mb-4 flex flex-col gap-2">
+	<p class="font-light text-neutral-500">Display Name</p>
+	<input type="text" class="input-auth" />
+</div>
+
+<div class="mb-4 flex flex-col gap-2">
+	<p class="font-light text-neutral-500">Password</p>
+	<input type="password" class="input-auth" />
+</div>
+
+<div class="mb-8 flex flex-col gap-2">
+	<p class="font-light text-neutral-500">Confirm Password</p>
+	<input type="password" class="input-auth" />
+</div>
+
+<button class="btn-primary mb-8">
+	<span>Submit</span>
 </button>
 
-<p>
-	Already have an account? <a href="/login" class="link">Login</a>
-</p>
+<a href="/register" class="link flex items-center gap-1">
+	<i class="bi bi-arrow-left"></i>
+	<span>Back</span>
+</a>
