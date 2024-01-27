@@ -39,7 +39,6 @@
 	"type": "module",
 	"dependencies": {
 		"argon2": "^0.31.2",
-		"jsonwebtoken": "^9.0.2",
-		"lucide-svelte": "^0.316.0"
+		"jsonwebtoken": "^9.0.2"
 	}
 }
