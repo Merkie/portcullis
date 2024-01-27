@@ -13,7 +13,7 @@
 	<span>Continue with Email</span>
 </button>
 
-<button class="auth-btn mb-8">
+<button class="auth-btn mb-8" disabled={true}>
 	<img src="/images/google-icon-small.png" width={20} alt="Google Logo" />
 	<span>Continue with Google</span>
 </button>
