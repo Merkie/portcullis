@@ -1,73 +1,38 @@
-![](https://drive.google.com/uc?export=download&id=1wLSnQj4J8V6luYK1DdGrg2p71aCCTOFN)
+# create-svelte
 
-# Portcullis - Client portals for people who give a 💩
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-This is a monorepo containing the portal, admin, backend, and documentation code for Portcullis. It uses NX to manage the workspaces.
+## Creating a project
 
-## Workspaces
+If you're seeing this, you've probably already done this step. Congrats!
 
-There are three main workspaces:
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-- `apps/portal` - The frontend React portal
-- `apps/admin` - The frontend React admin interface
-- `apps/backend` - The Fastify backend
-
-## Getting Started
-
-Install dependencies:
-
-```
-npm install
+# create a new project in my-app
+npm create svelte@latest my-app
 ```
 
-Run the various services:
+## Developing
 
-```
-nx serve portal 
-nx serve admin
-nx serve backend
-```
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-The portal will be at http://localhost:4200, admin at http://localhost:4201, and backend at http://localhost:3333
+```bash
+npm run dev
 
-**Building**
-
-Build all workspaces:
-
-```
-nx build-many --all
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-Or target specific ones:
+## Building
 
-```
-nx build portal
-nx build admin
-nx build backend
-```
+To create a production version of your app:
 
-**Testing**
-
-Run all tests:
-
-```
-nx test-many --all
+```bash
+npm run build
 ```
 
-Or target specific workspaces:
+You can preview the production build with `npm run preview`.
 
-```
-nx test portal
-nx test backend
-```
-
-**Generating Code**
-
-NX can generate new code like components, services, interfaces, etc:
-
-```
-nx generate @nrwl/react:component my-component --project=portal
-nx generate @nrwl/fastify:service my-service --project=backend
-```
-
-See the NX docs for more generation capabilities.
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
