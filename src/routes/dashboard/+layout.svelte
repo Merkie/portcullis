@@ -1,5 +1,6 @@
 <script lang="ts">
 	import {
+		Command,
 		CreditCard,
 		Files,
 		FormInput,
@@ -9,6 +10,8 @@
 		Plug,
 		Users
 	} from 'lucide-svelte';
+
+	const { data } = $props();
 </script>
 
 <svelte:head>
@@ -19,10 +22,10 @@
 	<!-- Side Nav -->
 	<div class="flex h-full w-[300px] flex-col border-r border-neutral-900">
 		<!-- Logo -->
-		<a href="/" class="flex items-center gap-4 p-8 pb-12 font-display text-2xl font-semibold">
-			<img width={25} src="/images/portcullis-logo.png" alt="Portcullis Logo" />
-			<span class="translate-y-[1px]">Portcullis</span>
-		</a>
+		<div class="mb-4 flex items-center gap-4 border-b border-neutral-900 p-8">
+			<Command />
+			<p class="font-display text-2xl font-semibold">{data.org.name}</p>
+		</div>
 		<!-- Nav Items -->
 		<a href={'/dashboard'} class="flex items-center gap-3 p-3 px-8 text-xl">
 			<Home />
