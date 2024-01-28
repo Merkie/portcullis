@@ -1,8 +1,25 @@
 <script lang="ts">
 	import slugify from 'slugify';
 
-	let name = $state('');
+	let name = $state('asdasdasd');
 	let slug = $derived(slugify(name, { strict: true, lower: true }));
+
+	let isSlugValid = $state<boolean | null>(null);
+
+	$effect(() => {
+		if (slug) {
+			isSlugValid = null;
+			fetch(`/api/org/validate-slug`, {
+				method: 'POST',
+				body: JSON.stringify({ slug })
+			})
+				.then((res) => res.json())
+				.then((res) => {
+					console.log(res);
+					isSlugValid = res.isValid;
+				});
+		}
+	});
 
 	async function submit() {}
 </script>
@@ -17,9 +34,20 @@
 {#if slug}
 	<div class="mb-8 flex flex-col gap-2">
 		<p class="font-light text-neutral-500">Your Domain:</p>
-		<p class="text-neutral-500">
-			<span class="text-white">{slug}</span><span>{`.tryportcullis.com`}</span>
-		</p>
+		<div class="flex items-center gap-4">
+			<p class="text-neutral-500">
+				<span class="text-white">{slug}</span><span>{`.tryportcullis.com`}</span>
+			</p>
+			{#if isSlugValid === true}
+				<span class="text-lime-400">Available <i class="bi bi-check-lg"></i></span>
+			{/if}
+			{#if isSlugValid === false}
+				<span class="text-red-500">Unavailable <i class="bi bi-x-lg"></i></span>
+			{/if}
+			{#if isSlugValid === null}
+				<span class="text-neutral-500">Checking...</span>
+			{/if}
+		</div>
 	</div>
 {/if}
 
