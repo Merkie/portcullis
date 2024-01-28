@@ -3,6 +3,7 @@ import { z } from 'zod';
 import argon2 from 'argon2';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '$env/static/private';
+import { PUBLIC_DOMAIN } from '$env/static/public';
 
 const schema = z.object({
 	email: z.string().email(),
@@ -39,6 +40,7 @@ export const POST = async ({ request, cookies, locals: { prisma } }) => {
 		path: '/',
 		maxAge: 60 * 60 * 24 * 7,
 		sameSite: 'lax',
+		domain: PUBLIC_DOMAIN,
 		httpOnly: true
 	});
 
