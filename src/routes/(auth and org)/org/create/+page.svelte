@@ -7,21 +7,27 @@
 	let isSlugValid = $state<boolean | null>(null);
 
 	$effect(() => {
-		if (slug) {
+		if (name) {
 			isSlugValid = null;
 			fetch(`/api/org/validate-slug`, {
 				method: 'POST',
-				body: JSON.stringify({ slug })
+				body: JSON.stringify({ name })
 			})
 				.then((res) => res.json())
 				.then((res) => {
-					console.log(res);
-					isSlugValid = res.isValid;
+					isSlugValid = res.success;
 				});
 		}
 	});
 
-	async function submit() {}
+	async function createOrg() {
+		const orgCreationResp = await fetch(`/api/org/create`, {
+			method: 'POST',
+			body: JSON.stringify({ name })
+		}).then((res) => res.json());
+
+		if (orgCreationResp.success) window.location.assign('/org/select');
+	}
 </script>
 
 <h1 class="mb-8 pr-8 font-display text-3xl font-semibold">Create new organization</h1>
@@ -51,7 +57,7 @@
 	</div>
 {/if}
 
-<button on:click={submit} class="btn-primary mb-8">
+<button on:click={createOrg} class="btn-primary mb-8">
 	<span>Submit</span>
 </button>
 
