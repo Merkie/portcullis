@@ -1,6 +1,6 @@
 ![](https://drive.google.com/uc?export=download&id=1wLSnQj4J8V6luYK1DdGrg2p71aCCTOFN)
 
-# Portcullis - The Client Portal that doesn't sacrifice
+# Portcullis - Client portals that refuse to sacrifice 🚪
 
 This is a repo containing the SvelteKit app for Portcullis, our open-source client portal
 
