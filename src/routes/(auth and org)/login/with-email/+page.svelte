@@ -17,7 +17,7 @@
 			return (error = 'Invalid input');
 		}
 
-		if (response.success) return window.location.assign('/dashboard');
+		if (response.success) return window.location.assign('/org/select');
 	}
 </script>
 
