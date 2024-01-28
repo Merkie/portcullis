@@ -7,6 +7,7 @@ declare global {
 		interface Locals {
 			prisma: PrismaClient;
 			user: User;
+			subdomain: string;
 		}
 		// interface PageData {}
 		// interface PageState {}

@@ -29,11 +29,23 @@ export const handle: Handle = async ({ event, resolve }) => {
 		}
 	}
 
+	const url = new URL(event.request.url);
+
 	if (!event.locals.user || !event.locals.user.id) {
-		const { pathname } = new URL(event.request.url);
-		if (pathname.startsWith('/dashboard')) throw redirect(307, '/login');
-		if (pathname.startsWith('/api') && !pathname.startsWith('/api/auth'))
+		// if unauthed is attempting to access dashboard or api, redirect to login
+		if (url.pathname.startsWith('/dashboard')) throw redirect(307, '/login');
+		if (url.pathname.startsWith('/api') && !url.pathname.startsWith('/api/auth'))
 			throw redirect(307, '/login');
+	}
+
+	event.locals.subdomain = '';
+	const subdomain = url.hostname.split('.')[0];
+	if (!['www', 'postcullis', 'localhost'].includes(subdomain)) {
+		event.locals.subdomain = subdomain;
+	}
+
+	if (!event.locals.subdomain) {
+		if (url.pathname.startsWith('/dashboard')) throw redirect(307, '/org/select');
 	}
 
 	console.log({ user: event.locals.user });

@@ -8,7 +8,9 @@
 	</div>
 	<!-- Content -->
 	<div class="grid flex-1 place-items-center">
-		<div class="flex w-[95%] max-w-[500px] flex-col rounded-lg border border-neutral-900 p-8">
+		<div
+			class="flex w-[95%] min-w-[500px] max-w-[700px] flex-col rounded-lg border border-neutral-900 p-8 sm:w-fit"
+		>
 			<slot />
 		</div>
 	</div>
