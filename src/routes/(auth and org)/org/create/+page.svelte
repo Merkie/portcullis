@@ -28,7 +28,7 @@
 
 <div class="mb-8 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Organization Name</p>
-	<input bind:value={name} type="email" class="input-auth" />
+	<input bind:value={name} type="text" class="input-auth" />
 </div>
 
 {#if slug}
