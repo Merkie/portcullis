@@ -1,7 +1,7 @@
 <script lang="ts">
 	import slugify from 'slugify';
 
-	let name = $state('asdasdasd');
+	let name = $state('');
 	let slug = $derived(slugify(name, { strict: true, lower: true }));
 
 	let isSlugValid = $state<boolean | null>(null);
