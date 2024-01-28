@@ -45,7 +45,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (!['www', 'postcullis', 'localhost'].includes(subdomain)) {
 		const fetchedMembership = await prisma.organizationMembership.findFirst({
 			where: {
-				userId: event.locals.user.id,
+				userId: event.locals.user?.id,
 				organization: {
 					slug: subdomain
 				}
@@ -62,6 +62,11 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (!event.locals.orgMembership) {
 		if (url.pathname.startsWith('/dashboard')) throw redirect(307, '/org/select');
 	}
+
+	console.log({
+		user: event.locals.user,
+		orgMembership: event.locals.orgMembership
+	});
 
 	return await resolve(event);
 };
