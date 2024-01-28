@@ -1,4 +1,4 @@
-import type { User, PrismaClient } from '@prisma/client';
+import type { User, PrismaClient, OrganizationMembership } from '@prisma/client';
 
 // for information about these interfaces
 declare global {
@@ -7,7 +7,7 @@ declare global {
 		interface Locals {
 			prisma: PrismaClient;
 			user: User;
-			subdomain: string;
+			orgMembership: OrganizationMembership & { organization: Organization };
 		}
 		// interface PageData {}
 		// interface PageState {}
