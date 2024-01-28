@@ -20,11 +20,11 @@
 
 <main class="flex h-screen w-screen">
 	<!-- Side Nav -->
-	<div class="flex h-full w-[300px] flex-col border-r border-neutral-900">
+	<div class="flex h-full min-w-[300px] flex-col border-r border-neutral-900">
 		<!-- Logo -->
 		<div class="mb-4 flex items-center gap-4 border-b border-neutral-900 p-8">
 			<Command />
-			<p class="font-display text-2xl font-semibold">{data.org.name}</p>
+			<p class="text-nowrap font-display text-2xl font-semibold">{data.org.name}</p>
 		</div>
 		<!-- Nav Items -->
 		<a href={'/dashboard'} class="flex items-center gap-3 p-3 px-8 text-xl">
