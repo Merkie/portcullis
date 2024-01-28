@@ -38,15 +38,15 @@ export const handle: Handle = async ({ event, resolve }) => {
 			throw redirect(307, '/login');
 	}
 
-	event.locals.subdomain = '';
-	const subdomain = url.hostname.split('.')[0];
-	if (!['www', 'postcullis', 'localhost'].includes(subdomain)) {
-		event.locals.subdomain = subdomain;
-	}
+	// event.locals.subdomain = '';
+	// const subdomain = url.hostname.split('.')[0];
+	// if (!['www', 'postcullis', 'localhost'].includes(subdomain)) {
+	// 	event.locals.subdomain = subdomain;
+	// }
 
-	if (!event.locals.subdomain) {
-		if (url.pathname.startsWith('/dashboard')) throw redirect(307, '/org/select');
-	}
+	// if (!event.locals.subdomain) {
+	// 	if (url.pathname.startsWith('/dashboard')) throw redirect(307, '/org/select');
+	// }
 
 	console.log({ user: event.locals.user });
 
