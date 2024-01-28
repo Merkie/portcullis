@@ -2,7 +2,7 @@ import { redirect, type Handle } from '@sveltejs/kit';
 import prisma from '$lib/resources/prisma';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET } from '$env/static/private';
-import type { User } from '@prisma/client';
+import type { Organization, OrganizationMembership, User } from '@prisma/client';
 
 export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.prisma = prisma;
@@ -38,17 +38,30 @@ export const handle: Handle = async ({ event, resolve }) => {
 			throw redirect(307, '/login');
 	}
 
-	event.locals.subdomain = '';
+	event.locals.orgMembership = null as unknown as OrganizationMembership & {
+		organization: Organization;
+	};
 	const subdomain = url.hostname.split('.')[0];
 	if (!['www', 'postcullis', 'localhost'].includes(subdomain)) {
-		event.locals.subdomain = subdomain;
+		const fetchedMembership = await prisma.organizationMembership.findFirst({
+			where: {
+				userId: event.locals.user.id,
+				organization: {
+					slug: subdomain
+				}
+			},
+			include: {
+				organization: true
+			}
+		});
+		if (!fetchedMembership) throw redirect(307, '/org/select');
+
+		event.locals.orgMembership = fetchedMembership;
 	}
 
-	if (!event.locals.subdomain) {
+	if (!event.locals.orgMembership) {
 		if (url.pathname.startsWith('/dashboard')) throw redirect(307, '/org/select');
 	}
-
-	console.log({ user: event.locals.user });
 
 	return await resolve(event);
 };
