@@ -30,6 +30,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Create organization | Portcullis</title>
+</svelte:head>
+
 <h1 class="mb-8 pr-8 font-display text-3xl font-semibold">Create new organization</h1>
 
 <div class="mb-8 flex flex-col gap-2">

@@ -14,6 +14,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Select organization | Portcullis</title>
+</svelte:head>
+
 <h1 class="mb-8 pr-8 font-display text-3xl font-semibold">Select your organization</h1>
 
 <div class="mb-8 flex flex-col gap-4">
