@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { PUBLIC_DOMAIN, PUBLIC_NODE_ENV } from '$env/static/public';
 	import type { Organization, OrganizationMembership } from '@prisma/client';
 
 	const { data } = $props() as {
@@ -7,15 +6,24 @@
 			memberships: (OrganizationMembership & { organization: Organization })[];
 		};
 	};
+
+	async function setOrganization(orgId: string) {
+		await fetch(`/api/org/${orgId}/select`, {
+			method: 'POST'
+		});
+	}
 </script>
 
 <h1 class="mb-8 pr-8 font-display text-3xl font-semibold">Select your organization</h1>
 
 <div class="mb-8 flex flex-col gap-4">
 	{#each data.memberships as membership}
-		<a
-			href={`${PUBLIC_NODE_ENV === 'development' ? 'http://' : 'https://'}${membership.organization.slug}.${PUBLIC_DOMAIN}/login`}
-			class="btn border border-neutral-900 p-3 text-lg">{membership.organization.name}</a
+		<button
+			on:click={async () => {
+				await setOrganization(membership.organizationId);
+				window.location.assign('/dashboard');
+			}}
+			class="btn border border-neutral-900 p-3 text-lg">{membership.organization.name}</button
 		>
 	{/each}
 </div>
