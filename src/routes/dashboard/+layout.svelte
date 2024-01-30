@@ -1,6 +1,5 @@
 <script lang="ts">
 	import {
-		Command,
 		CreditCard,
 		Files,
 		FormInput,
@@ -23,7 +22,7 @@
 	<div class="flex h-full min-w-[300px] flex-col border-r border-neutral-900">
 		<!-- Logo -->
 		<div class="mb-4 flex items-center gap-4 border-b border-neutral-900 p-8">
-			<Command />
+			<!-- <Command /> -->
 			<p class="text-nowrap font-display text-2xl font-semibold">
 				{data.orgMembership.organization.name}
 			</p>
