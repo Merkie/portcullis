@@ -24,7 +24,9 @@
 		<!-- Logo -->
 		<div class="mb-4 flex items-center gap-4 border-b border-neutral-900 p-8">
 			<Command />
-			<p class="text-nowrap font-display text-2xl font-semibold">{data.org.name}</p>
+			<p class="text-nowrap font-display text-2xl font-semibold">
+				{data.orgMembership.organization.name}
+			</p>
 		</div>
 		<!-- Nav Items -->
 		<a href={'/dashboard'} class="flex items-center gap-3 p-3 px-8 text-xl">
