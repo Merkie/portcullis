@@ -1,8 +1,8 @@
 <script lang="ts">
-	let email = $state('');
-	let password = $state('');
+	let email = '';
+	let password = '';
 
-	let error = $state('');
+	let error = '';
 
 	async function submit() {
 		error = '';
@@ -25,7 +25,7 @@
 	<title>Login with email | Portcullis</title>
 </svelte:head>
 
-<h1 class="mb-8 font-display text-4xl font-semibold">Login with email</h1>
+<h1 class="font-display mb-8 text-4xl font-semibold">Login with email</h1>
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Email</p>

@@ -10,7 +10,7 @@
 		Users
 	} from 'lucide-svelte';
 
-	const { data } = $props();
+	export let data;
 </script>
 
 <svelte:head>
@@ -23,7 +23,7 @@
 		<!-- Logo -->
 		<div class="mb-4 flex items-center gap-4 border-b border-neutral-900 p-8">
 			<!-- <Command /> -->
-			<p class="text-nowrap font-display text-2xl font-semibold">
+			<p class="font-display text-nowrap text-2xl font-semibold">
 				{data.orgMembership.organization.name}
 			</p>
 		</div>
@@ -37,7 +37,7 @@
 			<span>Clients</span>
 		</a>
 		<div class="my-6 h-[1px] border-t border-neutral-900"></div>
-		<p class="mb-2 ml-8 font-display font-medium text-neutral-500">Paths</p>
+		<p class="font-display mb-2 ml-8 font-medium text-neutral-500">Paths</p>
 		<a href={'/dashboard/chat'} class="flex items-center gap-3 p-3 px-8 text-xl">
 			<MessageSquare />
 			<span>Chat</span>
@@ -59,7 +59,7 @@
 			<span>Helpdesk</span>
 		</a>
 		<div class="my-6 h-[1px] border-t border-neutral-900"></div>
-		<p class="mb-2 ml-8 font-display font-medium text-neutral-500">Management</p>
+		<p class="font-display mb-2 ml-8 font-medium text-neutral-500">Management</p>
 		<a href={'/dashboard/integrations'} class="flex items-center gap-3 p-3 px-8 text-xl">
 			<Plug />
 			<span>Integrations</span>

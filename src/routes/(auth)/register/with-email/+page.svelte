@@ -1,10 +1,10 @@
 <script lang="ts">
-	let email = $state('');
-	let displayName = $state('');
-	let password = $state('');
-	let confirmPassword = $state('');
+	let email = '';
+	let displayName = '';
+	let password = '';
+	let confirmPassword = '';
 
-	let error = $state('');
+	let error = '';
 
 	async function submit() {
 		error = '';
@@ -29,7 +29,7 @@
 	<title>Register with email | Portcullis</title>
 </svelte:head>
 
-<h1 class="mb-8 font-display text-4xl font-semibold">Register with email</h1>
+<h1 class="font-display mb-8 text-4xl font-semibold">Register with email</h1>
 
 <div class="mb-4 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Email</p>

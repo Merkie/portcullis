@@ -1,24 +1,22 @@
 <script lang="ts">
 	import slugify from 'slugify';
 
-	let name = $state('');
-	let slug = $derived(slugify(name, { strict: true, lower: true }));
+	let name = '';
+	$: slug = slugify(name, { strict: true, lower: true });
 
-	let isSlugValid = $state<boolean | null>(null);
+	let isSlugValid: boolean | null = null;
 
-	$effect(() => {
-		if (name) {
-			isSlugValid = null;
-			fetch(`/api/org/validate-slug`, {
-				method: 'POST',
-				body: JSON.stringify({ name })
-			})
-				.then((res) => res.json())
-				.then((res) => {
-					isSlugValid = res.success;
-				});
-		}
-	});
+	$: if (name) {
+		isSlugValid = null;
+		fetch(`/api/org/validate-slug`, {
+			method: 'POST',
+			body: JSON.stringify({ name })
+		})
+			.then((res) => res.json())
+			.then((res) => {
+				isSlugValid = res.success;
+			});
+	}
 
 	async function createOrg() {
 		const orgCreationResp = await fetch(`/api/org/create`, {
@@ -34,7 +32,7 @@
 	<title>Create organization | Portcullis</title>
 </svelte:head>
 
-<h1 class="mb-8 pr-8 font-display text-3xl font-semibold">Create new organization</h1>
+<h1 class="font-display mb-8 pr-8 text-3xl font-semibold">Create new organization</h1>
 
 <div class="mb-8 flex flex-col gap-2">
 	<p class="font-light text-neutral-500">Organization Name</p>

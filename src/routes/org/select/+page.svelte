@@ -1,10 +1,8 @@
 <script lang="ts">
 	import type { Organization, OrganizationMembership } from '@prisma/client';
 
-	const { data } = $props() as {
-		data: {
-			memberships: (OrganizationMembership & { organization: Organization })[];
-		};
+	export let data: {
+		memberships: (OrganizationMembership & { organization: Organization })[];
 	};
 
 	async function setOrganization(orgId: string) {
@@ -18,7 +16,7 @@
 	<title>Select organization | Portcullis</title>
 </svelte:head>
 
-<h1 class="mb-8 pr-8 font-display text-3xl font-semibold">Select your organization</h1>
+<h1 class="font-display mb-8 pr-8 text-3xl font-semibold">Select your organization</h1>
 
 <div class="mb-8 flex flex-col gap-4">
 	{#each data.memberships as membership}

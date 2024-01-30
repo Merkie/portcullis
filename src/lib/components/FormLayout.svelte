@@ -1,7 +1,7 @@
 <main class="flex h-screen w-screen flex-col">
 	<!-- Top Section (Logo) -->
 	<div class="flex gap-8 border-b border-neutral-900 p-8">
-		<a href="/" class="flex items-center gap-4 font-display text-2xl font-semibold">
+		<a href="/" class="font-display flex items-center gap-4 text-2xl font-semibold">
 			<img width={25} src="/images/portcullis-logo.png" alt="Portcullis Logo" />
 			<span class="translate-y-[1px]">Portcullis</span>
 		</a>
