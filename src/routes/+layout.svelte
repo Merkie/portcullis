@@ -2,4 +2,4 @@
 	import '../app.postcss';
 </script>
 
-<slot><!-- optional fallback --></slot>
+<slot />
